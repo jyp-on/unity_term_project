@@ -14,6 +14,17 @@ public class FailCheck : MonoBehaviour
     void Update()
     {
         if(this.transform.position.y < -5.0f)
-            SceneManager.LoadScene("Result");
+            Fail();
+    }
+    void Fail()
+    {
+        SceneManager.LoadScene("Result");
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag == "Obstacle")
+        {
+            Fail();
+        }
     }
 }

@@ -61,10 +61,6 @@ public class FirstPersonAudio : MonoBehaviour
             {
                 SetPlayingMovingAudio(runningAudio);
             }
-            else
-            {
-                SetPlayingMovingAudio(stepAudio);
-            }
         }
         else
         {

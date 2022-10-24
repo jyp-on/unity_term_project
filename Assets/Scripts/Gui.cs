@@ -17,7 +17,7 @@ public class Gui : MonoBehaviour
     }
     void OnGUI()
     {
-        
+        GUI.skin.label.fontSize = 30;
         GUI.Label(new Rect(10, 10, 500,200), "생존시간 : "+((int)current_time).ToString());
     }
 }
