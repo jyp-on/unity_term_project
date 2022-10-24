@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallMovable : MonoBehaviour
 {
+	private GuiControl guiControl;
 	public bool isDown = true; //If the wall starts down, if not you must modify to false
 	public bool isRandom = true; //If you want that the wall go down random
 	public float speed = 2f;
@@ -15,12 +16,14 @@ public class WallMovable : MonoBehaviour
 
 	void Awake()
     {
-		height = transform.localScale.y;
-		if(isDown)
-			posYDown = transform.position.y;
-		else
-			posYDown = transform.position.y - height;
-	}
+			guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
+      speed += guiControl.level;
+			height = transform.localScale.y;
+			if(isDown)
+				posYDown = transform.position.y;
+			else
+				posYDown = transform.position.y - height;
+		}
 
     // Update is called once per frame
     void Update()
@@ -61,7 +64,7 @@ public class WallMovable : MonoBehaviour
 			int num = Random.Range(0, 2);
 			//Debug.Log(num);
 			if (num == 1)
-				StartCoroutine(Retry(1.5f));
+				StartCoroutine(Retry(0.5f));
 		}
 	}
 
@@ -73,7 +76,7 @@ public class WallMovable : MonoBehaviour
 		int num = Random.Range(0, 2);
 		//Debug.Log("2-"+num);
 		if (num == 1)
-			StartCoroutine(Retry(1.25f));
+			StartCoroutine(Retry(0.5f));
 		else
 			canChange = true;
 	}

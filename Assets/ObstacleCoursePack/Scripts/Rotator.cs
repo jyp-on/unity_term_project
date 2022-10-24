@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
-	public float speed = 3f;
+    private GuiControl guiControl;
+	public float speed = 1f;
 
 
+    void Awake()
+    {
+        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
+        speed += (guiControl.level / 5.0f);
+    }
     // Update is called once per frame
     void Update()
     {

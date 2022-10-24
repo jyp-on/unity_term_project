@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Pendulum : MonoBehaviour
 {
-	public float speed = 1.5f;
-	public float limit = 75f; //Limit in degrees of the movement
-	public bool randomStart = false; //If you want to modify the start position
+	private GuiControl guiControl;
+	public float speed = 3f;
+	
+	// public float limit = 75f; //Limit in degrees of the movement
+	public bool randomStart = true; //If you want to modify the start position
 	private float random = 0;
 
 	// Start is called before the first frame update
 	void Awake()
     {
+			guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
+      speed += guiControl.level;
 			if(randomStart)
 				random = Random.Range(0f, 1f);
 		}
@@ -19,7 +23,7 @@ public class Pendulum : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-			float angle = limit * Mathf.Sin(Time.time + random * speed);
-			transform.localRotation = Quaternion.Euler(0, 0, angle);
+			float angle =  Mathf.Sin(Time.time + random);
+			transform.localRotation = Quaternion.Euler(0, 0, angle * speed);
 		}
 }
