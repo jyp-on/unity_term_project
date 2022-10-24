@@ -7,12 +7,14 @@ public class Result : MonoBehaviour
     public GuiControl guiControl;
     void Awake()
     {
-        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
         Cursor.lockState = CursorLockMode.None; 
+
+        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
         guiControl.isPlay = false;
     }
     public void OnClickNewGame()
     {
+        Destroy(GameObject.Find("GameManager"));
         SceneManager.LoadScene("Play");
     }
     public void OnClickMenu()
@@ -31,8 +33,8 @@ public class Result : MonoBehaviour
     void OnGUI() 
     {
         GUI.skin.label.fontSize = 40;
-        GUI.Label(new Rect(Screen.width/2 - 350, Screen.height/2 + 50, 500,200), "생존시간 : "+((int)guiControl.current_time).ToString()+"초");
-        GUI.Label(new Rect(Screen.width/2 + 170, Screen.height/2 + 50, 500,200), "난이도 : "+guiControl.level);
+        GUI.Label(new Rect(Screen.width/2 - 350, Screen.height/2 + 50, 800,300), "생존시간 : "+((int)guiControl.current_time).ToString()+"초");
+        GUI.Label(new Rect(Screen.width/2 + 170, Screen.height/2 + 50, 800,300), "난이도 : "+guiControl.level);
     }
         
 }
