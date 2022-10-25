@@ -7,21 +7,14 @@ public class GuiControl : MonoBehaviour
 {
     public float current_time;
     public int level = 0;
-    public bool isPlay;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        isPlay = true;
-        DontDestroyOnLoad(gameObject);
-    }
+
     void Start()
     {
         StartCoroutine(levelUp());
     }
     void Update() 
     {
-        if(isPlay)
-            current_time += Time.deltaTime;
+        current_time += Time.deltaTime;
     }
     
     void OnGUI()
@@ -34,7 +27,6 @@ public class GuiControl : MonoBehaviour
     {
         while(true)
         {
-            if(isPlay)
                 level += 1;
                 yield return new WaitForSeconds(5.0f);
         }

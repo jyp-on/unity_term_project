@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Result : MonoBehaviour
 {
-    public GuiControl guiControl;
+    private int current_score;
+    private int best_score;
+    private int level;
     void Awake()
     {
         Cursor.lockState = CursorLockMode.None; 
 
-        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-        guiControl.isPlay = false;
+        current_score = PlayerPrefs.GetInt("current_score");
+        best_score = PlayerPrefs.GetInt("best_score");
+        level = PlayerPrefs.GetInt("level");
     }
     public void OnClickNewGame()
     {
@@ -33,8 +36,9 @@ public class Result : MonoBehaviour
     void OnGUI() 
     {
         GUI.skin.label.fontSize = 40;
-        GUI.Label(new Rect(Screen.width/2 - 350, Screen.height/2 + 50, 800,300), "생존시간 : "+((int)guiControl.current_time).ToString()+"초");
-        GUI.Label(new Rect(Screen.width/2 + 170, Screen.height/2 + 50, 800,300), "난이도 : "+guiControl.level);
+        GUI.Label(new Rect(Screen.width/2 - 350, Screen.height/2 + 50, 800,300), "현재점수 : "+current_score.ToString()+"초");
+        GUI.Label(new Rect(Screen.width/2 - 350, Screen.height/2 + 100, 800,300), "최고점수 : "+best_score.ToString()+"초");
+        GUI.Label(new Rect(Screen.width/2 + 170, Screen.height/2 + 50, 800,300), "난이도 : "+level);
     }
         
 }

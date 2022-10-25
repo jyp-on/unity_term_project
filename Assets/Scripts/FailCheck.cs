@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class FailCheck : MonoBehaviour
-{
+{   
+    private GuiControl guiControl;
+
+    private int current_score;
+    private int best_score;
+    
+    void Awake()
+    {
+        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +28,16 @@ public class FailCheck : MonoBehaviour
 
     void Fail()
     {
+        PlayerPrefs.SetInt("current_score", (int)guiControl.current_time);
+        PlayerPrefs.SetInt("level", guiControl.level);
+
+        current_score = PlayerPrefs.GetInt("current_score");
+        best_score = PlayerPrefs.GetInt("best_score");
+
+        if(current_score > best_score){
+            PlayerPrefs.SetInt("best_score", current_score);
+        }
+
         SceneManager.LoadScene("Result");
     }
 }
