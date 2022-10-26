@@ -10,7 +10,7 @@ public class LevelControl : MonoBehaviour
     public Rotator rotator;
     public WallMovable wallMovable;
     
-    public float power = 10.0f;
+    public float power = 7.0f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,8 +25,8 @@ public class LevelControl : MonoBehaviour
             yield return new WaitForSeconds(5.0f);
 
             movableObs.speed += power;
-            pendulum.speed += power;
-            rotator.speed += power;
+            pendulum.speed += (power*2);
+            rotator.speed += (power/3);
             wallMovable.speed += power;
         }
     }

@@ -5,12 +5,8 @@ using UnityEngine;
 public class BoatMove : MonoBehaviour
 {
     public float speed = 5.0f;
-    private GuiControl guiControl;
-    // Start is called before the first frame update
     void Awake()
     {
-        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-        StartCoroutine(SpeedUp());
     }
 
     // Update is called once per frame
@@ -28,7 +24,7 @@ public class BoatMove : MonoBehaviour
     {
         while(true)
         {
-            speed += guiControl.level;
+            speed += 1;
             yield return new WaitForSeconds(10.0f);
         }
     }

@@ -32,7 +32,7 @@ public class FailCheck : MonoBehaviour
         PlayerPrefs.SetInt("level", guiControl.level);
 
         current_score = PlayerPrefs.GetInt("current_score");
-        best_score = PlayerPrefs.GetInt("best_score");
+        best_score = PlayerPrefs.GetInt("best_score", 0); //최고점수가 없다면 0점으로 
 
         if(current_score > best_score){
             PlayerPrefs.SetInt("best_score", current_score);

@@ -12,7 +12,6 @@ public class ObstacleSpawner : MonoBehaviour
     void Awake()
     {
         guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-        
     }
 
     IEnumerator Start()
@@ -20,12 +19,12 @@ public class ObstacleSpawner : MonoBehaviour
         while(true)
         {
             int rand_num = Random.Range(0, 5);
-            float rand_x = Random.Range(-3.0f, 3.0f);
+            float rand_x = Random.Range(-2.0f, 2.0f);
             GameObject pf_Ob = Instantiate(pf_Obstacle[rand_num], 
             new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
              pf_Obstacle[rand_num].transform.rotation);
 
-            Destroy(pf_Ob, 10.0f);
+            Destroy(pf_Ob, 20.0f);
             yield return new WaitForSeconds(interval);
         }
     }

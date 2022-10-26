@@ -12,7 +12,7 @@ public class Result : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; 
 
         current_score = PlayerPrefs.GetInt("current_score");
-        best_score = PlayerPrefs.GetInt("best_score");
+        best_score = PlayerPrefs.GetInt("best_score"); 
         level = PlayerPrefs.GetInt("level");
     }
     public void OnClickNewGame()

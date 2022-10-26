@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Shootable
   - Obstacle
+  - Body
+  - Controller
   layers:
   - Default
   - TransparentFX

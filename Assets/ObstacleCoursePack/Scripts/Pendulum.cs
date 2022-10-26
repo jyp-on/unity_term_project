@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pendulum : MonoBehaviour
 {
 	private GuiControl guiControl;
-	public float speed = 3f;
+	public float speed = 100f;
 	
 	// public float limit = 75f; //Limit in degrees of the movement
 	public bool randomStart = true; //If you want to modify the start position
