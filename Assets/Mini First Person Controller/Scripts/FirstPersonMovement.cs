@@ -25,23 +25,17 @@ public class FirstPersonMovement : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         boat = GameObject.FindGameObjectWithTag("Boat");
-        body = GameObject.FindGameObjectWithTag("Body");
         controller = GameObject.FindGameObjectWithTag("Controller");
-        capCol = controller.GetComponent<CapsuleCollider>();
     }
     void Update()
     {
         if(Input.GetMouseButtonDown(2) && !isSmallKeyDown){
-            body.transform.localScale += Vector3.down * (0.7f);
-            capCol.radius = 0.3f;
-            capCol.height = 0.3f;
+            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.11f, this.transform.localScale.z);
             isSmallKeyDown = true;
         }
 
         if(Input.GetMouseButtonUp(2)){
-            body.transform.localScale += Vector3.up * (0.7f);
-            capCol.height = 1.8f;
-            capCol.radius = 0.5f;
+            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.22f, this.transform.localScale.z);
             isSmallKeyDown = false;
         }
 

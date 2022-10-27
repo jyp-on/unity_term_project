@@ -18,7 +18,7 @@ public class ObstacleSpawner : MonoBehaviour
     {   
         while(true)
         {
-            int rand_num = Random.Range(0, 5);
+            int rand_num = Random.Range(0, 6);
             float rand_x = Random.Range(-2.0f, 2.0f);
             GameObject pf_Ob = Instantiate(pf_Obstacle[rand_num], 
             new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),

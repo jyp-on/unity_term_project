@@ -14,10 +14,10 @@ public class BoatMove : MonoBehaviour
     {
         this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if(Input.GetKey(KeyCode.Q) && this.transform.position.x > -3.0f)
-            this.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        if(Input.GetKey(KeyCode.E) && this.transform.position.x < 3.0f)
-            this.transform.Translate(Vector3.right * speed * Time.deltaTime);
+        // if(Input.GetKey(KeyCode.Q) && this.transform.position.x > -3.0f)
+        //     this.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        // if(Input.GetKey(KeyCode.E) && this.transform.position.x < 3.0f)
+        //     this.transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
     IEnumerator SpeedUp()
@@ -25,7 +25,7 @@ public class BoatMove : MonoBehaviour
         while(true)
         {
             speed += 1;
-            yield return new WaitForSeconds(10.0f);
+            yield return new WaitForSeconds(5.0f);
         }
     }
 }

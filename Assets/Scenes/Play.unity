@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 165258472}
   m_Layer: 0
   m_Name: Boat
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,6 +650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436483567149388474, guid: 21e98409188f4414a98c18e69e1e8af4,
+        type: 3}
+      propertyPath: runSpeed
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3444956725157297460, guid: 21e98409188f4414a98c18e69e1e8af4,
         type: 3}
