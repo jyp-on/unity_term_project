@@ -11,6 +11,7 @@ public class Pendulum : MonoBehaviour
   void Awake()
   {
     guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
+		this.transform.rotation = Quaternion.Euler(0, 0 , Random.Range(-90f, 90f));
     speed += guiControl.level;
   }
 
