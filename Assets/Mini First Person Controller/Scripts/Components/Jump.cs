@@ -2,19 +2,11 @@
 
 public class Jump : MonoBehaviour
 {
+    public AudioSource audioSource;
     new Rigidbody rigidbody;
-    public float jumpStrength = 2;
-    public event System.Action Jumped;
+    public float jumpStrength = 4;
+    public bool isJumped; //점프했는지 여부
 
-    [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
-    GroundCheck groundCheck;
-
-
-    void Reset()
-    {
-        // Try to get groundCheck.
-        groundCheck = GetComponentInChildren<GroundCheck>();
-    }
 
     void Awake()
     {
@@ -25,10 +17,18 @@ public class Jump : MonoBehaviour
     void LateUpdate()
     {
         // Jump when the Jump button is pressed and we are on the ground.
-        if (Input.GetButtonDown("Jump") && (!groundCheck || groundCheck.isGrounded))
+        if (Input.GetButtonDown("Jump") && (!isJumped))
         {
+            isJumped = true;
             rigidbody.AddForce(Vector3.up * 150 * jumpStrength);
-            Jumped?.Invoke();
+            audioSource.Play();
+        }
+    }
+
+    void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag == "Boat")
+        {
+            isJumped = false;
         }
     }
 }

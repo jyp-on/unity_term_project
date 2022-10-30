@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FirstPersonMovement : MonoBehaviour
 {
+    public AudioSource small;
+    public AudioSource thin;
     public float speed = 5;
 
     [Header("Running")]
@@ -15,6 +17,7 @@ public class FirstPersonMovement : MonoBehaviour
     private CapsuleCollider capCol;
     private GameObject boat;
     private bool isSmallKeyDown;
+    private bool isThinKeyDown;
     new Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
@@ -29,18 +32,12 @@ public class FirstPersonMovement : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetMouseButtonDown(2) && !isSmallKeyDown){
-            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.11f, this.transform.localScale.z);
-            isSmallKeyDown = true;
-        }
+        Small();
+        Thin();
+        
 
-        if(Input.GetMouseButtonUp(2)){
-            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.22f, this.transform.localScale.z);
-            isSmallKeyDown = false;
-        }
-
-        if(isSmallKeyDown){
-            speed = 1f;
+        if(isSmallKeyDown || isThinKeyDown){
+            speed = 2f;
             runSpeed = 3f;
         }
         else{
@@ -49,6 +46,38 @@ public class FirstPersonMovement : MonoBehaviour
         }
 
 
+    }
+
+
+    void Small()
+    {
+        //세로로 작아지기
+        if(Input.GetMouseButtonDown(0) && !isSmallKeyDown){
+            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.11f, this.transform.localScale.z);
+            isSmallKeyDown = true;
+            small.Play();
+        }
+
+        if(Input.GetMouseButtonUp(0)){
+            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.22f, this.transform.localScale.z);
+            isSmallKeyDown = false;
+        }
+    }
+
+    void Thin()
+    {
+        if(Input.GetMouseButtonDown(1) && !isThinKeyDown){
+            controller.transform.localScale = new Vector3(0.1f, this.transform.localScale.y, this.transform.localScale.z);
+            controller.GetComponent<CapsuleCollider>().radius = 0.25f;
+            isThinKeyDown = true;
+            thin.Play();
+        }
+
+        if(Input.GetMouseButtonUp(1)){
+            controller.transform.localScale = new Vector3(0.2f, this.transform.localScale.y, this.transform.localScale.z);
+            controller.GetComponent<CapsuleCollider>().radius = 0.5f;
+            isThinKeyDown = false;
+        }
     }
 
     void FixedUpdate()
@@ -70,7 +99,7 @@ public class FirstPersonMovement : MonoBehaviour
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnCollisionStay(Collision other) {
         if(other.gameObject.tag != "Boat"){ //보트에서 발을 때면 
             this.transform.parent = null;
         }
