@@ -9,6 +9,9 @@ public class LevelControl : MonoBehaviour
     public Pendulum pendulum;
     public Rotator rotator;
     public WallMovable wallMovable;
+    public int current_level = 0;
+    public int max_level = 5;
+
     
     public float power = 7.0f;
     // Start is called before the first frame update
@@ -23,11 +26,15 @@ public class LevelControl : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(5.0f);
-
-            movableObs.speed += power;
-            pendulum.speed += (power*2);
-            rotator.speed += (power/3);
-            wallMovable.speed += power;
+            current_level += 1;
+            if(current_level < max_level)
+            {
+                movableObs.speed += power;
+                pendulum.speed += (power*2);
+                rotator.speed += (power/3);
+                wallMovable.speed += power;
+            }
+            
         }
     }
 }
