@@ -5,8 +5,8 @@ public class Jump : MonoBehaviour
     public AudioSource audioSource;
     new Rigidbody rigidbody;
     public float jumpStrength = 4;
-    public bool isJumped; //점프했는지 여부
-
+    public int jumpCount; //점프했는지 여부
+    public float jumpTime;
 
     void Awake()
     {
@@ -14,21 +14,19 @@ public class Jump : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    void LateUpdate()
+    void Update()
     {
         // Jump when the Jump button is pressed and we are on the ground.
-        if (Input.GetButtonDown("Jump") && (!isJumped))
+        if (Input.GetButtonDown("Jump") && (jumpCount<2)) //2단점프까지 가능.
         {
-            isJumped = true;
-            rigidbody.AddForce(Vector3.up * 150 * jumpStrength);
+            jumpCount += 1;
+            rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+
             audioSource.Play();
         }
     }
 
     void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Boat")
-        {
-            isJumped = false;
-        }
+        jumpCount = 0;
     }
 }

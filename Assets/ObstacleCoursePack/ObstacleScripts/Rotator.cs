@@ -11,7 +11,7 @@ public class Rotator : MonoBehaviour
     void Awake()
     {
         guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-        speed += (guiControl.level / 10.0f);
+        speed += (guiControl.level / 5.0f);
     }
     // Update is called once per frame
     void Update()

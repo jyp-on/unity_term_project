@@ -1,20 +1,20 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableObs : MonoBehaviour
+public class BridgeSphere : MonoBehaviour
 {
-	public float speed = 1f;
-	private GuiControl guiControl;
-	private int randomStartDirection;
-	private bool isRight;
-   
+    private GuiControl guiControl;
+    // Start is called before the first frame update
+    public float speed = 1f;
+    private bool isRight;
+    private int randomStartDirection; //right 0, left 1
     void Awake()
     {
-			guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-      speed += (guiControl.level / 3.0f);
+        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
+        speed += (guiControl.level / 50.0f);
 
-			randomStartDirection = Random.Range(0, 2);
+        randomStartDirection = Random.Range(0, 2);
 
         if(randomStartDirection == 0){
             isRight = true;
@@ -24,17 +24,17 @@ public class MovableObs : MonoBehaviour
         }
 
         this.transform.position = new Vector3(Random.Range(-7.0f, 7.0f), this.transform.position.y, this.transform.position.z);  
-
-		}
+    }
 
     // Update is called once per frame
     void Update()
     {
-			if(this.transform.position.x < -7.0f) //ì™¼ìª½ìœ¼ë¡œ ë‚˜ê°€ë©´ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ëŒë ¤ì•¼í•¨.
+
+        if(this.transform.position.x < -7.0f) //¿ÞÂÊÀ¸·Î ³ª°¡¸é ¿À¸¥ÂÊÀ¸·Î µ¹·Á¾ßÇÔ.
             isRight = true;
             
 
-        if(this.transform.position.x > 7.0f)  //ì˜¤ë¥¸ìª½ìœ¼ë¡œ ë‚˜ê°ˆ ê²½ìš°  
+        if(this.transform.position.x > 7.0f)  //¿À¸¥ÂÊÀ¸·Î ³ª°¥ °æ¿ì  
             isRight = false;
         
         if(isRight)
@@ -45,5 +45,7 @@ public class MovableObs : MonoBehaviour
         {
             this.transform.Translate(Vector3.left / 100 * speed);
         }
-		}
+            
+            
+    }
 }

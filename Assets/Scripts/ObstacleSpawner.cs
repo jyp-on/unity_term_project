@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GuiControl guiControl;
+    private GuiControl guiControl;
     public GameObject[] pf_Obstacle;
     public float interval = 5.0f;
     public float game_level;
@@ -18,7 +18,7 @@ public class ObstacleSpawner : MonoBehaviour
     {   
         while(true)
         {
-            int rand_num = Random.Range(0, 6);
+            int rand_num = Random.Range(0, 7);
             float rand_x = Random.Range(-2.0f, 2.0f);
             GameObject pf_Ob = Instantiate(pf_Obstacle[rand_num], 
             new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
@@ -38,15 +38,15 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else if(game_level < 6)
         {
-            interval = 4.0f;
+            interval = 4.5f;
         }
         else if(game_level < 10)
         {
-            interval = 3.0f;
+            interval = 4.0f;
         }
         else
         {
-            interval = 2.0f;
+            interval = 3.0f;
         }
         
     }

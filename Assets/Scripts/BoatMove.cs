@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class BoatMove : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed;
+    public float max_speed;
     void Awake()
     {
+        StartCoroutine(SpeedUp());
     }
 
     // Update is called once per frame
     void Update()
     {
         this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
-        // if(Input.GetKey(KeyCode.Q) && this.transform.position.x > -3.0f)
-        //     this.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        // if(Input.GetKey(KeyCode.E) && this.transform.position.x < 3.0f)
-        //     this.transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
     IEnumerator SpeedUp()
     {
         while(true)
         {
-            speed += 1;
+            if(speed >= max_speed)
+                yield break;
+
             yield return new WaitForSeconds(5.0f);
+            speed += 1;
         }
     }
 }

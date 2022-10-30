@@ -8,7 +8,7 @@ public class RandomWall : MonoBehaviour
     public GameObject ob2;
     void Awake()
     {
-        ob1.transform.Translate(Vector3.up * (Random.Range(0f, 3.0f)));
-        ob2.transform.Translate(Vector3.up * (Random.Range(0f, 3.0f)));
+        ob1.transform.Translate(Vector3.up * (Random.Range(0f, 2.0f)));
+        ob2.transform.Translate(Vector3.up * (Random.Range(0f, 2.0f)));
     }
 }
