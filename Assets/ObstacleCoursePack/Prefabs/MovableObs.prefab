@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8994021905377605061}
   - component: {fileID: 8994021905377605058}
   - component: {fileID: 8994021905377605059}
-  - component: {fileID: 8994021905377605056}
+  - component: {fileID: 8601497107808021786}
   m_Layer: 0
   m_Name: MovableObs
   m_TagString: Obstacle
@@ -99,7 +99,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8994021905377605056
+--- !u!114 &8601497107808021786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8994021905377605057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c78eaffd4b5a704daa689d5bc3e3e09, type: 3}
+  m_Script: {fileID: 11500000, guid: 633fedeb85d32a54e8684a515c066b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1

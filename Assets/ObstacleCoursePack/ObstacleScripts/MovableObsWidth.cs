@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableObs : MonoBehaviour
+public class MovableObsWidth : MonoBehaviour
 {
 	public float speed = 1f;
 	private GuiControl guiControl;
@@ -30,8 +30,8 @@ public class MovableObs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-			if(this.transform.position.x < -7.0f) //왼쪽으로 나가면 오른쪽으로 돌려야함.
-            isRight = true;
+        if(this.transform.position.x < -7.0f) //왼쪽으로 나가면 오른쪽으로 돌려야함.
+        isRight = true;
             
 
         if(this.transform.position.x > 7.0f)  //오른쪽으로 나갈 경우  

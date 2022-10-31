@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7397137975640516147}
   - component: {fileID: 7397137975640516146}
   - component: {fileID: 7397137975640516145}
-  - component: {fileID: 7397137975640516149}
+  - component: {fileID: 7681288973968405074}
   m_Layer: 0
   m_Name: MovableWall
   m_TagString: Obstacle
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7397137975640516149
+--- !u!114 &7681288973968405074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,10 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7397137975640516144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c78eaffd4b5a704daa689d5bc3e3e09, type: 3}
+  m_Script: {fileID: 11500000, guid: 21bb387831add214fb37c64664007e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 8
-  horizontal: 1
-  speed: 3
-  offset: 0
+  speed: 1

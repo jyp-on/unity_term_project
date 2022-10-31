@@ -5,14 +5,14 @@ using UnityEngine;
 public class Pendulum : MonoBehaviour
 {
   private GuiControl guiControl;
-  public float speed = 100f;
+  public float speed;
 
   // Start is called before the first frame update
   void Awake()
   {
     guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
 		this.transform.rotation = Quaternion.Euler(0, 0 , Random.Range(-90f, 90f));
-    speed += guiControl.level;
+    speed += (guiControl.level * 3);
   }
 
   // Update is called once per frame
