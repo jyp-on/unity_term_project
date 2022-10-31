@@ -100,14 +100,14 @@ public class FirstPersonMovement : MonoBehaviour
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
     }
 
-    void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Boat"){ //보트에 발을 대면
-            this.transform.parent = boat.transform;
-        }
-        else{
-            this.transform.parent = null; //다른물체에 발 닿으면
-        }
-    }
+    // void OnCollisionEnter(Collision other) {
+    //     if(other.gameObject.tag == "Boat"){ //보트에 발을 대면
+    //         this.transform.parent = boat.transform;
+    //     }
+    //     else{
+    //         this.transform.parent = null; //다른물체에 발 닿으면
+    //     }
+    // }
 
     // void OnCollisionExit(Collision other) {
     //     if(other.gameObject.tag == "Boat"){ //보트에서 발을 때면 
