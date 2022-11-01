@@ -27,6 +27,7 @@ public class Jump : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other) {
-        jumpCount = 0;
+        if(other.gameObject.tag == "Boat")
+            jumpCount = 0;
     }
 }

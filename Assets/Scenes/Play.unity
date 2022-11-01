@@ -164,7 +164,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165258471}
-  m_Material: {fileID: 13400000, guid: c5881576458665e4eb49f9bcbb8f6066, type: 2}
+  m_Material: {fileID: 13400000, guid: ba92fb44336020f40bdf294bb66bc9da, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 287891641}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Obstacle
+  m_TagString: FailCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 438208963}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Obstacle
+  m_TagString: FailCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 715367861}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Obstacle
+  m_TagString: FailCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1043,6 +1043,11 @@ PrefabInstance:
       propertyPath: jumpStrength
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3440484467820055400, guid: 21e98409188f4414a98c18e69e1e8af4,
+        type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 2093774049}
     - target: {fileID: 3444956725157297460, guid: 21e98409188f4414a98c18e69e1e8af4,
         type: 3}
       propertyPath: m_Enabled
@@ -1052,7 +1057,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 42f5937c5cd107c44bcdb155f14c54c0,
+      objectReference: {fileID: 13400000, guid: ba92fb44336020f40bdf294bb66bc9da,
         type: 2}
     - target: {fileID: 3444956725157297460, guid: 21e98409188f4414a98c18e69e1e8af4,
         type: 3}
@@ -1351,7 +1356,7 @@ GameObject:
   - component: {fileID: 1987680576}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Obstacle
+  m_TagString: FailCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,6 +1570,12 @@ AudioSource:
 --- !u!4 &2088137149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6072853999015204935, guid: 21e98409188f4414a98c18e69e1e8af4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1637117578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2093774049 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3380140427158581760, guid: 21e98409188f4414a98c18e69e1e8af4,
     type: 3}
   m_PrefabInstance: {fileID: 1637117578}
   m_PrefabAsset: {fileID: 0}

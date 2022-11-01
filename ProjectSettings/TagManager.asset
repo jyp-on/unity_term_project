@@ -9,6 +9,7 @@ TagManager:
   - Body
   - Controller
   - Boat
+  - FailCheck
   layers:
   - Default
   - TransparentFX

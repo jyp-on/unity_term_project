@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7bb8decf3e6cbfb4e8c6c865fb3d7d36, type: 2}
+  - {fileID: 2100000, guid: 7dc5ded7b05195746a715aff478e6cf8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,7 +129,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &4416347176314923500
 GameObject:
   m_ObjectHideFlags: 0
