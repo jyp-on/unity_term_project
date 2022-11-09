@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
-	public float speed = 1f;
-    public float maxSpeed = 3f;
+    SpeedControl speedControl;
+	private float speed;
 
+    void Awake()
+    {
+        speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
+        speed = speedControl.rotatorSpeed;
+        Debug.Log("Rotator Speed : " + speed);
+    }
     void Update()
     {
-		  transform.Rotate(0f, 0f, -1 * speed * Time.deltaTime / 0.01f, Space.Self);
+		transform.Rotate(0f, 0f, -1 * speed * Time.deltaTime / 0.01f, Space.Self);
 	}
-
-    
-
 }

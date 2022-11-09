@@ -13,8 +13,7 @@ public class MovableObsHeight : MonoBehaviour
   {
     speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
     speed = speedControl.movableObsHeightSpeed;
-    Debug.Log(speed);
-    
+
     randomStartDirection = Random.Range(0, 2);
 
     if (randomStartDirection == 0)

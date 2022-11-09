@@ -5,12 +5,14 @@ using UnityEngine;
 public class Pendulum : MonoBehaviour
 {
   SpeedControl speedControl;
-  public float speed = 100f;
-  public float maxSpeed = 120f;
+  private float speed;
 
   // Start is called before the first frame update
   void Awake()
   {
+    speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
+    speed = speedControl.pendulumSpeed;
+    Debug.Log("Pendulum Speed : " + speed);
 		this.transform.rotation = Quaternion.Euler(0, 0 , Random.Range(-90f, 90f));
   }
 

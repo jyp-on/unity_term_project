@@ -16,9 +16,15 @@ public class SpeedControl : MonoBehaviour
 
     public float movableObsHeightSpeed;
     public float movableObsHeightMaxSpeed;
-    MovableObsWidth movableObsWidth;
-    Pendulum pendulum;
-    Rotator rotator;
+    
+    public float movableObsWidthSpeed;
+    public float movableObsWidthMaxSpeed;
+
+    public float pendulumSpeed;
+    public float pendulumMaxSpeed;
+    
+    public float rotatorSpeed;
+    public float rotatorMaxSpeed;
 
     void Awake()
     {
@@ -30,20 +36,28 @@ public class SpeedControl : MonoBehaviour
         flyingObstacleDownPower = 1.80f;
         flyingObstacleMaxDownPower = 1.85f;
 
-        movableObsHeightSpeed = 300f;
-        movableObsHeightMaxSpeed = 500f;
+        movableObsHeightSpeed = 250f;
+        movableObsHeightMaxSpeed = 650f;
 
+        movableObsWidthSpeed = 250f;
+        movableObsWidthMaxSpeed = 650f;
+
+        pendulumSpeed = 100f;
+        pendulumMaxSpeed = 120f;
+
+        rotatorSpeed = 1f;
+        rotatorMaxSpeed = 3f;
     }
 
     void Start()
     {
-        // StartCoroutine(BridgeSphereSpeedUp());
+        StartCoroutine(BridgeSphereSpeedUp());
         StartCoroutine(FlyingObstacleSpeedUp());
         StartCoroutine(FlyingObstacleDownPowerUp());
-        // StartCoroutine(movableObsHeightSpeedUp());
-        // StartCoroutine(MovableObsWidthSpeedUp());
-        // StartCoroutine(PendulumSpeedUp());
-        // StartCoroutine(RotatorSpeedUp());
+        StartCoroutine(movableObsHeightSpeedUp());
+        StartCoroutine(MovableObsWidthSpeedUp());
+        StartCoroutine(PendulumSpeedUp());
+        StartCoroutine(RotatorSpeedUp());
     }
 
     IEnumerator BridgeSphereSpeedUp()
@@ -97,8 +111,8 @@ public class SpeedControl : MonoBehaviour
             if(movableObsHeightSpeed >= movableObsHeightMaxSpeed)
                 yield break;
 
-            yield return new WaitForSeconds(5.0f);
-            movableObsHeightSpeed += 20f;
+            yield return new WaitForSeconds(10.0f);
+            movableObsHeightSpeed += 50f;
         }
     }
 
@@ -106,11 +120,11 @@ public class SpeedControl : MonoBehaviour
     {
         while(true)
         {
-            if(movableObsWidth.speed >= movableObsWidth.maxSpeed)
+            if(movableObsWidthSpeed >= movableObsWidthMaxSpeed)
                 yield break;
 
             yield return new WaitForSeconds(10.0f);
-            movableObsWidth.speed += 20;
+            movableObsWidthSpeed += 50;
         }
     }
 
@@ -118,11 +132,11 @@ public class SpeedControl : MonoBehaviour
     {
         while(true)
         {
-            if(pendulum.speed >= pendulum.maxSpeed)
+            if(pendulumSpeed >= pendulumMaxSpeed)
                 yield break;
 
             yield return new WaitForSeconds(10.0f);
-            pendulum.speed += 5;
+            pendulumSpeed += 5.0f;
         }
     }
 
@@ -130,11 +144,11 @@ public class SpeedControl : MonoBehaviour
     {
         while(true)
         {
-            if(rotator.speed >= rotator.maxSpeed)
+            if(rotatorSpeed >= rotatorMaxSpeed)
                 yield break;
 
             yield return new WaitForSeconds(10.0f);
-            rotator.speed += 0.5f;
+            rotatorSpeed += 0.5f;
         }
     }
 }

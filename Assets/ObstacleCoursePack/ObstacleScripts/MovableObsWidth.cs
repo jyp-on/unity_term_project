@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class MovableObsWidth : MonoBehaviour
 {
-  public float speed = 300f;
-  public float maxSpeed = 500f;
+  SpeedControl speedControl;
+  private float speed;
   private int randomStartDirection;
   private bool isRight;
 
   void Awake()
   { 
+    speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
+    speed = speedControl.movableObsWidthSpeed;
+    Debug.Log(speed);
+    
     randomStartDirection = Random.Range(0, 2);
 
     if (randomStartDirection == 0)
