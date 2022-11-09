@@ -11,7 +11,6 @@ public class Rotator : MonoBehaviour
     {
         speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
         speed = speedControl.rotatorSpeed;
-        Debug.Log("Rotator Speed : " + speed);
     }
     void Update()
     {

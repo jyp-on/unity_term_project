@@ -29,18 +29,20 @@ public class SpeedControl : MonoBehaviour
     void Awake()
     {
         bridgeSphereSpeed = 4f;
-        bridgeSphereMaxSpeed = 7f;
+        bridgeSphereMaxSpeed = 8f;
 
+
+        //공중장애물은 더이상 건들지 말것. boat speed도 마찬가지.
         flyingObstaclespeed = 0.6f;
         flyingObstacleMaxspeed = 1.2f;
         flyingObstacleDownPower = 1.80f;
         flyingObstacleMaxDownPower = 1.85f;
 
         movableObsHeightSpeed = 250f;
-        movableObsHeightMaxSpeed = 650f;
+        movableObsHeightMaxSpeed = 1000f;
 
         movableObsWidthSpeed = 250f;
-        movableObsWidthMaxSpeed = 650f;
+        movableObsWidthMaxSpeed = 1000f;
 
         pendulumSpeed = 100f;
         pendulumMaxSpeed = 120f;

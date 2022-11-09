@@ -12,7 +12,6 @@ public class Pendulum : MonoBehaviour
   {
     speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
     speed = speedControl.pendulumSpeed;
-    Debug.Log("Pendulum Speed : " + speed);
 		this.transform.rotation = Quaternion.Euler(0, 0 , Random.Range(-90f, 90f));
   }
 
