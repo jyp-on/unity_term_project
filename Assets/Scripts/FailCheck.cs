@@ -10,6 +10,8 @@ public class FailCheck : MonoBehaviour
   private GuiControl guiControl;
   private int current_score;
   private int best_score;
+  private bool isDelay = false;
+  private float delayTime = 0.0f;
 
   //
   [SerializeField]
@@ -31,6 +33,17 @@ public class FailCheck : MonoBehaviour
     if (current_hp <= 0) Fail();
 
     HandleHp();
+    DelayControl();
+    
+  }
+
+  private void DelayControl()
+  {
+    if(isDelay == true)
+    {
+      delayTime += Time.deltaTime;
+      if(delayTime > 1.0f) isDelay = false;
+    }
   }
 
   private void HandleHp()
@@ -42,16 +55,18 @@ public class FailCheck : MonoBehaviour
   {
     if (other.gameObject.tag == "FailCheck") Fail(); //보트 옆면에 닿았을때.
 
-    if (other.gameObject.tag == "Obstacle")
+    if (other.gameObject.tag == "Obstacle"  && !isDelay)
     { //player hp 감소
+      isDelay = true;
       CollisionSound.Play();
       if (current_hp > 0) current_hp -= 20;
       
       temp = (float)current_hp / (float)max_hp;
     }
 
-    if (other.gameObject.tag == "FlyingObstacle")
+    if (other.gameObject.tag == "FlyingObstacle"  && !isDelay)
     { //player hp 감소
+      isDelay = true;
       CollisionSound.Play();
       if (current_hp > 0) current_hp -= 10;
       
@@ -75,7 +90,7 @@ public class FailCheck : MonoBehaviour
   void OnGUI()
   {
       GUI.skin.label.fontSize = 60;
-      GUI.Label(new Rect(Screen.width - 360, 40, 300,120), current_hp + "/" + max_hp);
+      GUI.Label(new Rect(Screen.width - 360, 20, 300,120), current_hp + "/" + max_hp);
   }
 
   void Fail()

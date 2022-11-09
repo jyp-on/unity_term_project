@@ -12,6 +12,7 @@ TagManager:
   - FailCheck
   - FlyingObstacle
   - PlayerEyes
+  - HealPack
   layers:
   - Default
   - TransparentFX

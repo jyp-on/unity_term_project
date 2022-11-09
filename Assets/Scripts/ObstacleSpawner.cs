@@ -32,10 +32,10 @@ public class ObstacleSpawner : MonoBehaviour
     {
         game_level = guiControl.level;
         
-        if(game_level < 5) interval = 4.0f;
-        else if(game_level < 10) interval = 3.0f;
-        else if(game_level < 15) interval = 2.5f;
-        else interval = 1.5f;
+        if(game_level < 5) interval = 4.5f;
+        else if(game_level < 10) interval = 4.0f;
+        else if(game_level < 15) interval = 3.5f;
+        else interval = 3f;
 
     }
 }

@@ -6,12 +6,6 @@ public class HealPackSpawner : MonoBehaviour
 {
     public GameObject pf_HealPack;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator Start()
     {   
         while(true)

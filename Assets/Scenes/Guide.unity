@@ -185,12 +185,18 @@ MonoBehaviour:
 
     Dash : LeftShit
 
-    Jump : Space Bar
+    Jump : Space Bar (Possible 2 times)
 
-    Mouse left
-    Click : smaller
+    Mouse
+    left Click : smaller
 
     Mouse Right Click : thin
+
+
+    it''s gameover when
+    you fall or your hp becomes 0
+
+    Avoid obstacles!
 
 '
   m_isRightToLeft: 0
@@ -219,8 +225,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
