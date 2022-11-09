@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class FailCheck : MonoBehaviour
 {
+  public AudioSource CollisionSound;
+
   private GuiControl guiControl;
   private int current_score;
   private int best_score;
@@ -24,36 +26,35 @@ public class FailCheck : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (this.transform.position.y < -3.0f)
-      Fail();
+    if (this.transform.position.y < -3.0f) Fail();
+
+    if (current_hp <= 0) Fail();
 
     HandleHp();
-
   }
 
   private void HandleHp()
   {
-
     hp.value = Mathf.Lerp(hp.value, temp, Time.deltaTime * 10);
   }
 
   private void OnCollisionEnter(Collision other)
   {
-    if (other.gameObject.tag == "FailCheck")
-    {
-      Fail();
-    }
+    if (other.gameObject.tag == "FailCheck") Fail(); //보트 옆면에 닿았을때.
 
     if (other.gameObject.tag == "Obstacle")
     { //player hp 감소
-      if (current_hp > 0)
-      {
-        current_hp -= 20;
-      }
-      else
-      {
-        Fail();
-      }
+      CollisionSound.Play();
+      if (current_hp > 0) current_hp -= 20;
+      
+      temp = (float)current_hp / (float)max_hp;
+    }
+
+    if (other.gameObject.tag == "FlyingObstacle")
+    { //player hp 감소
+      CollisionSound.Play();
+      if (current_hp > 0) current_hp -= 10;
+      
       temp = (float)current_hp / (float)max_hp;
     }
   }

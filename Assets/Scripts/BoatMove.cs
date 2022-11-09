@@ -24,7 +24,7 @@ public class BoatMove : MonoBehaviour
             if(speed >= max_speed)
                 yield break;
 
-            yield return new WaitForSeconds(10.0f);
+            yield return new WaitForSeconds(5.0f);
             speed += 1;
         }
     }

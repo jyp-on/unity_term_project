@@ -35,18 +35,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
         Small();
         Thin();
-        
-
-        if(isSmallKeyDown || isThinKeyDown){
-            speed = 2f;
-            runSpeed = 3f;
-        }
-        else{
-            speed = 5f;
-            runSpeed = 8f;
-        }
-
-
+        SpeedCheck();
     }
 
 
@@ -78,6 +67,28 @@ public class FirstPersonMovement : MonoBehaviour
             controller.transform.localScale = new Vector3(0.1f, this.transform.localScale.y, this.transform.localScale.z);
             controller.GetComponent<CapsuleCollider>().radius = 0.5f;
             isThinKeyDown = false;
+        }
+    }
+
+    void SpeedCheck()
+    {
+        if(isSmallKeyDown || isThinKeyDown)
+        {
+            if(isSmallKeyDown && isThinKeyDown)
+            {
+                speed = 1f;
+                runSpeed = 1.5f;
+            }
+            else
+            {
+                speed = 2f;
+                runSpeed = 3f;
+            }
+        }
+        else
+        {
+            speed = 5f;
+            runSpeed = 8f;
         }
     }
 

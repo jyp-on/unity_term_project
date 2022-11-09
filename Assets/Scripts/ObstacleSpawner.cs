@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
             new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
              pf_Obstacle[rand_num].transform.rotation);
 
-            Destroy(pf_Ob, 12.0f);
+            Destroy(pf_Ob, 10.0f);
             yield return new WaitForSeconds(interval);
         }
     }
@@ -32,22 +32,10 @@ public class ObstacleSpawner : MonoBehaviour
     {
         game_level = guiControl.level;
         
-        if(game_level < 5)
-        {
-            interval = 4.0f;
-        }
-        else if(game_level < 10)
-        {
-            interval = 3.0f;
-        }
-        else if(game_level < 15)
-        {
-            interval = 2.0f;
-        }
-        else
-        {
-            interval = 1.0f;
-        }
-        
+        if(game_level < 5) interval = 4.0f;
+        else if(game_level < 10) interval = 3.0f;
+        else if(game_level < 15) interval = 2.5f;
+        else interval = 1.5f;
+
     }
 }
