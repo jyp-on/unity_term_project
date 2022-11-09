@@ -59,6 +59,12 @@ public class FailCheck : MonoBehaviour
     }
   }
 
+  void OnGUI()
+  {
+      GUI.skin.label.fontSize = 60;
+      GUI.Label(new Rect(Screen.width - 360, 40, 300,120), current_hp + "/" + max_hp);
+  }
+
   void Fail()
   {
     PlayerPrefs.SetInt("current_score", (int)guiControl.current_time);
