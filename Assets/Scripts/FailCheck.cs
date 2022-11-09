@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FailCheck : MonoBehaviour
 {
   public AudioSource CollisionSound;
-
+  public AudioSource HealSound;
   private GuiControl guiControl;
   private int current_score;
   private int best_score;
@@ -56,7 +56,20 @@ public class FailCheck : MonoBehaviour
       if (current_hp > 0) current_hp -= 10;
       
       temp = (float)current_hp / (float)max_hp;
-    }
+    } 
+  }
+
+  void OnTriggerStay(Collider other) 
+  {
+    if (other.gameObject.tag == "HealPack")
+    { //player hp Áõ°¡
+      HealSound.Play();
+      current_hp += 10;
+      if(current_hp > 100) current_hp = 100;
+
+      temp = (float)current_hp / (float)max_hp;
+      Destroy(other.gameObject);
+    }  
   }
 
   void OnGUI()
