@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class BridgeSphere : MonoBehaviour
 {
-    private float speed = 5f;
-    private float maxSpeed = 8f;
+    SpeedControl speedControl;
+    private float speed;
     private bool isRight;
     private int randomStartDirection; //right 0, left 1
     void Awake()
+    {
+        speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
+        speed = speedControl.bridgeSphereSpeed;
+    }
+    void Start()
     {
         randomStartDirection = Random.Range(0, 2);
 
@@ -45,15 +50,5 @@ public class BridgeSphere : MonoBehaviour
             
     }
 
-    IEnumerator SpeedUp()
-    {
-        while(true)
-        {
-            if(speed >= maxSpeed)
-                yield break;
-
-            yield return new WaitForSeconds(10.0f);
-            speed += 1f;
-        }
-    }
+    
 }

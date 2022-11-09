@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WallMovable : MonoBehaviour
 {
-	private GuiControl guiControl;
 	public bool isDown = true; //If the wall starts down, if not you must modify to false
 	public bool isRandom = true; //If you want that the wall go down random
 	private float speed = 2f;

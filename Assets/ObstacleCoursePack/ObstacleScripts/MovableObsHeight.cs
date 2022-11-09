@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class MovableObsHeight : MonoBehaviour
 {
-  private float speed = 300f;
-  private float maxSpeed = 500f;
+  SpeedControl speedControl;
+  private float speed;
   private int randomStartDirection;
   private bool isUp;
 
   void Awake()
   {
-
+    speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
+    speed = speedControl.movableObsHeightSpeed;
+    Debug.Log(speed);
+    
     randomStartDirection = Random.Range(0, 2);
 
     if (randomStartDirection == 0)
@@ -47,15 +50,5 @@ public class MovableObsHeight : MonoBehaviour
     }
   }
 
-  IEnumerator SpeedUp()
-    {
-        while(true)
-        {
-            if(speed >= maxSpeed)
-                yield break;
-
-            yield return new WaitForSeconds(5.0f);
-            speed += 20f;
-        }
-    }
+  
 }

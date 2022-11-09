@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovableObsWidth : MonoBehaviour
 {
-  private float speed = 300f;
-  private float maxSpeed = 500f;
+  public float speed = 300f;
+  public float maxSpeed = 500f;
   private int randomStartDirection;
   private bool isRight;
 
@@ -47,15 +47,5 @@ public class MovableObsWidth : MonoBehaviour
     }
   }
 
-  IEnumerator SpeedUp()
-    {
-        while(true)
-        {
-            if(speed >= maxSpeed)
-                yield break;
-
-            yield return new WaitForSeconds(10.0f);
-            speed += 20;
-        }
-    }
+  
 }

@@ -155,8 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c24707d7180364ca820f7ff05ffc4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  max_speed: 8
 --- !u!65 &165258473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1153,7 +1151,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107825431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c99bff4b15687814eae4b07e3d9fdab5, type: 3}
   m_Name: 
@@ -1842,6 +1840,7 @@ GameObject:
   - component: {fileID: 1853170882}
   - component: {fileID: 1853170885}
   - component: {fileID: 1853170886}
+  - component: {fileID: 1853170887}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1974,6 +1973,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1853170887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853170880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66647a743aeb0ed45a4082c62928a093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bridgeSphereSpeed: 0
+  bridgeSphereMaxSpeed: 0
+  flyingObstaclespeed: 0
+  flyingObstacleMaxspeed: 0
+  flyingObstacleDownPower: 0
+  flyingObstacleMaxDownPower: 0
+  movableObsHeightSpeed: 0
+  movableObsHeightMaxSpeed: 0
 --- !u!1 &1918130340
 GameObject:
   m_ObjectHideFlags: 0
