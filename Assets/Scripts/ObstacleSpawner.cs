@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
             new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
              pf_Obstacle[rand_num].transform.rotation);
 
-            Destroy(pf_Ob, 10.0f);
+            Destroy(pf_Ob, 12.0f);
             yield return new WaitForSeconds(interval);
         }
     }
