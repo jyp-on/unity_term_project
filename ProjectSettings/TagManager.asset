@@ -10,6 +10,8 @@ TagManager:
   - Controller
   - Boat
   - FailCheck
+  - FlyingObstacle
+  - PlayerEyes
   layers:
   - Default
   - TransparentFX
