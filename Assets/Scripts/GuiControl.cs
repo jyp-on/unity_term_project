@@ -27,8 +27,8 @@ public class GuiControl : MonoBehaviour
     {
         while(true)
         {
-                level += 1;
-                yield return new WaitForSeconds(5.0f);
+            level += 1;
+            yield return new WaitForSeconds(5.0f);
         }
     }
 }

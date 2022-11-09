@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class BridgeSphere : MonoBehaviour
 {
-    private GuiControl guiControl;
-    // Start is called before the first frame update
-    public float speed = 1f;
+    private float speed = 5f;
+    private float maxSpeed = 8f;
     private bool isRight;
     private int randomStartDirection; //right 0, left 1
     void Awake()
     {
-        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-        speed += (guiControl.level / 50.0f);
-
         randomStartDirection = Random.Range(0, 2);
 
         if(randomStartDirection == 0){
@@ -39,13 +35,25 @@ public class BridgeSphere : MonoBehaviour
         
         if(isRight)
         {
-            this.transform.Translate(Vector3.right / 100 * speed);
+            this.transform.Translate(Vector3.right  * speed * Time.deltaTime);
         }
         else
         {
-            this.transform.Translate(Vector3.left / 100 * speed);
+            this.transform.Translate(Vector3.left  * speed * Time.deltaTime);
         }
             
             
+    }
+
+    IEnumerator SpeedUp()
+    {
+        while(true)
+        {
+            if(speed >= maxSpeed)
+                yield break;
+
+            yield return new WaitForSeconds(10.0f);
+            speed += 1f;
+        }
     }
 }

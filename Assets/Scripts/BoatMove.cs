@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoatMove : MonoBehaviour
 {
-    public float speed;
-    public float max_speed;
+    private float speed = 4f;
+    private float max_speed = 8f;
     void Awake()
     {
         StartCoroutine(SpeedUp());

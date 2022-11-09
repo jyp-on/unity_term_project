@@ -5,30 +5,50 @@ using UnityEngine;
 public class FlyingObstacle : MonoBehaviour
 {
     private GameObject player;
-    private GuiControl guiControl;
+
     // Start is called before the first frame update
-    private float downPower = 1; //보트속도가 점점빨라져서 더 밑을 향하게 해야함.
-    private int maxLevel = 8; //보트 최대속도
+    private float speed = 2f; //보트속도가 점점빨라져서 더 밑을 향하게 해야함.
+    private float maxSpeed = 2f;
+    private int downPower = 1;
+    private int maxDownPower = 3;
     void Awake()
     {
-        guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
         player = GameObject.FindGameObjectWithTag("Controller");
-        if(guiControl.level < maxLevel) downPower = (guiControl.level * 10f);
-        else downPower = (maxLevel * 10f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 velocity = Vector3.zero;
 
         player = GameObject.FindGameObjectWithTag("Controller");
-        Vector3 speed = Vector3.zero;
-        transform.position = Vector3.SmoothDamp(transform.position
-        , player.transform.position + (Vector3.down * downPower * Time.deltaTime * 3), 
-        ref speed, 0.07f);
+        transform.position = Vector3.Lerp(transform.position, player.transform.position, speed * Time.deltaTime);
+        if(transform.position.z < player.transform.position.z - 1f)  Destroy(this.gameObject);
 
-        if(transform.position.z < player.transform.position.z -1.5)  Destroy(this.gameObject);
+    }
 
+    IEnumerator SpeedUp()
+    {
+        while(true)
+        {
+            if(speed >= maxSpeed)
+                yield break;
+
+            yield return new WaitForSeconds(10.0f);
+            speed += 1f;
+            downPower += 1;
+        }
+    }
+
+    IEnumerator DownPowerUp()
+    {
+        while(true)
+        {
+            if(downPower >= maxDownPower)
+                yield break;
+
+            yield return new WaitForSeconds(10.0f);
+            downPower += 1;
+        }
     }
 }

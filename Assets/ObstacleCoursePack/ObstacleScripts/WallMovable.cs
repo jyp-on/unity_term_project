@@ -7,7 +7,7 @@ public class WallMovable : MonoBehaviour
 	private GuiControl guiControl;
 	public bool isDown = true; //If the wall starts down, if not you must modify to false
 	public bool isRandom = true; //If you want that the wall go down random
-	public float speed = 2f;
+	private float speed = 2f;
 
 	private float height; //Height of the platform
 	private float posYDown; //Start position of the Y coord
@@ -16,8 +16,6 @@ public class WallMovable : MonoBehaviour
 
 	void Awake()
     {
-			guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-      speed += guiControl.level;
 			height = transform.localScale.y;
 			if(isDown)
 				posYDown = transform.position.y;

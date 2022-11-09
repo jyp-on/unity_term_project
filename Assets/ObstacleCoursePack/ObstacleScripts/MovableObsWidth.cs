@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class MovableObsWidth : MonoBehaviour
 {
-  public float speed = 1f;
-  private GuiControl guiControl;
+  private float speed = 300f;
+  private float maxSpeed = 500f;
   private int randomStartDirection;
   private bool isRight;
 
   void Awake()
-  {
-    guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
-    speed = 1 + (guiControl.level/10);
-
+  { 
     randomStartDirection = Random.Range(0, 2);
 
     if (randomStartDirection == 0)
@@ -27,6 +24,7 @@ public class MovableObsWidth : MonoBehaviour
 
     this.transform.position = new Vector3(Random.Range(-7.0f, 7.0f), this.transform.position.y, this.transform.position.z);
 
+    
   }
 
   // Update is called once per frame
@@ -41,11 +39,23 @@ public class MovableObsWidth : MonoBehaviour
 
     if (isRight)
     {
-      this.transform.Translate(new Vector3(0.01f * speed, 0, 0));
+      this.transform.Translate(new Vector3(0.01f * speed * Time.deltaTime, 0, 0));
     }
     else
     {
-      this.transform.Translate(new Vector3(-0.01f * speed, 0, 0));
+      this.transform.Translate(new Vector3(-0.01f * speed * Time.deltaTime, 0, 0));
     }
   }
+
+  IEnumerator SpeedUp()
+    {
+        while(true)
+        {
+            if(speed >= maxSpeed)
+                yield break;
+
+            yield return new WaitForSeconds(10.0f);
+            speed += 20;
+        }
+    }
 }
