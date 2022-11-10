@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class FailCheck : MonoBehaviour
 {
+  TextMeshProUGUI HpText;
   public AudioSource CollisionSound;
   public AudioSource HealSound;
   private GuiControl guiControl;
@@ -21,6 +23,7 @@ public class FailCheck : MonoBehaviour
   private float temp;
   void Awake()
   {
+    HpText = GameObject.Find("Hp").GetComponent<TextMeshProUGUI>();
     guiControl = GameObject.Find("GameManager").GetComponent<GuiControl>();
     hp.value = (float)current_hp / (float)max_hp;
     temp = (float)current_hp / (float)max_hp;
@@ -34,7 +37,7 @@ public class FailCheck : MonoBehaviour
 
     HandleHp();
     DelayControl();
-    
+    HpText.text = current_hp + "/" + max_hp;
   }
 
   private void DelayControl()
@@ -48,7 +51,7 @@ public class FailCheck : MonoBehaviour
 
   private void HandleHp()
   {
-    hp.value = Mathf.Lerp(hp.value, temp, Time.deltaTime * 10);
+    hp.value = Mathf.Lerp(hp.value, temp, Time.deltaTime * 3);
   }
 
   private void OnCollisionEnter(Collision other)
@@ -85,12 +88,6 @@ public class FailCheck : MonoBehaviour
       temp = (float)current_hp / (float)max_hp;
       Destroy(other.gameObject);
     }  
-  }
-
-  void OnGUI()
-  {
-      GUI.skin.label.fontSize = 60;
-      GUI.Label(new Rect(Screen.width - 360, 20, 300,120), current_hp + "/" + max_hp);
   }
 
   void Fail()

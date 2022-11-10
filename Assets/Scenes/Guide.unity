@@ -181,34 +181,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move : WASD
-
-    Dash : LeftShit
-
-    Jump : Space Bar (Possible 2 times)
-
-    Mouse
-    left Click : smaller
-
-    Mouse Right Click : thin
-
-
-    it''s gameover when
-    you fall or your hp becomes 0
-
-    Avoid obstacles!
-
-'
+  m_text: "\uC6C0\uC9C1\uC784 : WASD\n\uB2EC\uB9AC\uAE30: LeftShit\n\uC810\uD504(2\uB2E8\uAE4C\uC9C0\uAC00\uB2A5)
+    : Space Bar\n\uC88C\uD074\uB9AD : \uD50C\uB808\uC774\uC5B4\uAC00 \uC791\uC544\uC9D0\n\uC6B0\uD074\uB9AD
+    : \uD50C\uB808\uC774\uC5B4\uAC00 \uC587\uC544\uC9D0\n\n\uC7A5\uC560\uBB3C\uC744
+    \uD53C\uD574 \uC624\uB798 \uC0DD\uC874 \uD574\uC57C\uD558\uB294 \uAC8C\uC784\uC785\uB2C8\uB2E4!\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9d118bd3794d90f4db42c43f8bf0ae24, type: 2}
+  m_sharedMaterial: {fileID: 8529652915932588730, guid: 9d118bd3794d90f4db42c43f8bf0ae24,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -687,8 +674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Material: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.8379047, g: 0.9056604, b: 0.14951938, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -771,10 +758,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Guide
+  m_text: "\uAC00\uC774\uB4DC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9d118bd3794d90f4db42c43f8bf0ae24, type: 2}
+  m_sharedMaterial: {fileID: 8529652915932588730, guid: 9d118bd3794d90f4db42c43f8bf0ae24,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -982,12 +970,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main
-
-'
+  m_text: "\uBA54\uC778\uBA54\uB274"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9d118bd3794d90f4db42c43f8bf0ae24, type: 2}
+  m_sharedMaterial: {fileID: 8529652915932588730, guid: 9d118bd3794d90f4db42c43f8bf0ae24,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
