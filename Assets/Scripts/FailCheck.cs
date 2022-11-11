@@ -51,7 +51,7 @@ public class FailCheck : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (this.transform.position.y < -3.0f) Fail();
+    if (this.transform.position.y < -1f) Fail();
 
     if (current_hp <= 0) Fail();
 

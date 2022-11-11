@@ -68,13 +68,13 @@ public class FirstPersonMovement : MonoBehaviour
             current_stamina -= 10f;
             if(current_stamina < 0) current_stamina = 0;
             temp_stamina = (float)current_stamina / 100;
-            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.05f, this.transform.localScale.z);
+            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.3f, this.transform.localScale.z);
             isSmallKeyDown = true;
             small.Play();
         }
 
         if(Input.GetMouseButtonUp(0)){
-            controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.1f, this.transform.localScale.z);
+            controller.transform.localScale = new Vector3(this.transform.localScale.x, 1.1f, this.transform.localScale.z);
             isSmallKeyDown = false;
         }
     }
@@ -85,14 +85,16 @@ public class FirstPersonMovement : MonoBehaviour
             current_stamina -= 10f;
             if(current_stamina < 0) current_stamina = 0;
             temp_stamina = (float)current_stamina / 100;
-            controller.transform.localScale = new Vector3(0.05f, this.transform.localScale.y, this.transform.localScale.z);
+            controller.transform.localScale = new Vector3(0.3f, this.transform.localScale.y, this.transform.localScale.z);
+            Debug.Log(controller.transform.localScale);
             controller.GetComponent<CapsuleCollider>().radius = 0.3f;
             isThinKeyDown = true;
             thin.Play();
         }
 
         if(Input.GetMouseButtonUp(1)){
-            controller.transform.localScale = new Vector3(0.1f, this.transform.localScale.y, this.transform.localScale.z);
+            controller.transform.localScale = new Vector3(1.1f, this.transform.localScale.y, this.transform.localScale.z);
+            Debug.Log(controller.transform.localScale);
             controller.GetComponent<CapsuleCollider>().radius = 0.5f;
             isThinKeyDown = false;
         }
