@@ -6,8 +6,6 @@ public class FirstPersonMovement : MonoBehaviour
     public AudioSource small;
     public AudioSource thin;
     public float speed = 5;
-
-    [Header("Running")]
     public bool canRun = true;
     public float runSpeed = 8;
     public KeyCode runningKey = KeyCode.LeftShift;

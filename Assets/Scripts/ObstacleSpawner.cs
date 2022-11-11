@@ -35,11 +35,15 @@ public class ObstacleSpawner : MonoBehaviour
     {
         game_level = guiControl.level;
         
-        if(game_level < 5) interval = 6f;
-        else if(game_level < 10) interval = 5.5f;
-        else if(game_level < 15) interval = 5f;
-        else if(game_level < 20) interval = 4f;
-        else interval = 3f;
+        if(game_level < 5) interval = 7f;
+        else if(game_level < 10) interval = 6.5f;
+        else if(game_level < 15) interval = 6f;
+        else if(game_level < 20) interval = 5.5f;
+        else if(game_level < 25) interval = 5f;
+        else if(game_level < 30) interval = 4f;
+        else if(game_level < 35) interval = 3f;
+        else if(game_level < 40) interval = 2.5f;
+        else interval = 2f; //최대난이도 40
 
     }
 }

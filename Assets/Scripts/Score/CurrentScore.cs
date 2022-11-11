@@ -14,6 +14,6 @@ public class CurrentScore : MonoBehaviour
         bestScoreText = GetComponent<TextMeshProUGUI>();
         current_score = PlayerPrefs.GetInt("current_score"); 
 
-        bestScoreText.text = "현재점수\n"+current_score.ToString()+"초";
+        bestScoreText.text = "현재점수\n"+current_score.ToString()+"점";
     }
 }

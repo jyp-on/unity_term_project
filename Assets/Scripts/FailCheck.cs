@@ -116,7 +116,7 @@ public class FailCheck : MonoBehaviour
     FirstPersonMovement.current_stamina = 100; //static 영역이라 초기화필요.
     FirstPersonMovement.temp_stamina = 100;
 
-    PlayerPrefs.SetInt("current_score", (int)guiControl.current_time);
+    PlayerPrefs.SetInt("current_score", (int)GuiControl.current_score);
     PlayerPrefs.SetInt("level", guiControl.level);
 
     current_score = PlayerPrefs.GetInt("current_score");

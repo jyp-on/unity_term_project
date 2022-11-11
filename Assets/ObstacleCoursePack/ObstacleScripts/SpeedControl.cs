@@ -28,9 +28,10 @@ public class SpeedControl : MonoBehaviour
 
     void Awake()
     {
-        bridgeSphereSpeed = 4f;
-        bridgeSphereMaxSpeed = 8f;
+        //200초까지 모든 장애물 점차적으로 증가하도록 구현.
 
+        bridgeSphereSpeed = 4f;
+        bridgeSphereMaxSpeed = 12f;
 
         //공중장애물은 더이상 건들지 말것. boat speed도 마찬가지.
         flyingObstaclespeed = 0.6f;
@@ -39,16 +40,16 @@ public class SpeedControl : MonoBehaviour
         flyingObstacleMaxDownPower = 1.85f;
 
         movableObsHeightSpeed = 250f;
-        movableObsHeightMaxSpeed = 1000f;
+        movableObsHeightMaxSpeed = 1250f;
 
         movableObsWidthSpeed = 250f;
-        movableObsWidthMaxSpeed = 1000f;
+        movableObsWidthMaxSpeed = 1250f;
 
         pendulumSpeed = 100f;
-        pendulumMaxSpeed = 120f;
+        pendulumMaxSpeed = 140f;
 
         rotatorSpeed = 1f;
-        rotatorMaxSpeed = 3f;
+        rotatorMaxSpeed = 5f;
     }
 
     void Start()
@@ -70,7 +71,7 @@ public class SpeedControl : MonoBehaviour
                 yield break;
 
             yield return new WaitForSeconds(10.0f);
-            bridgeSphereSpeed += 1f;
+            bridgeSphereSpeed += 0.4f;
         }
     }
 
@@ -138,7 +139,7 @@ public class SpeedControl : MonoBehaviour
                 yield break;
 
             yield return new WaitForSeconds(10.0f);
-            pendulumSpeed += 5.0f;
+            pendulumSpeed += 2.0f;
         }
     }
 
@@ -150,7 +151,7 @@ public class SpeedControl : MonoBehaviour
                 yield break;
 
             yield return new WaitForSeconds(10.0f);
-            rotatorSpeed += 0.5f;
+            rotatorSpeed += 0.2f;
         }
     }
 }

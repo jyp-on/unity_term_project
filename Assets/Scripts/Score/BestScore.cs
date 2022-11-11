@@ -13,6 +13,6 @@ public class BestScore : MonoBehaviour
         bestScoreText = GetComponent<TextMeshProUGUI>();
         best_score = PlayerPrefs.GetInt("best_score"); 
 
-        bestScoreText.text = "최고점수 \n"+best_score.ToString()+"초";
+        bestScoreText.text = "최고점수 \n"+best_score.ToString()+"점";
     }
 }
