@@ -9,7 +9,6 @@ public class FirstPersonMovement : MonoBehaviour
 
     [Header("Running")]
     public bool canRun = true;
-    public bool IsRunning { get; private set; }
     public float runSpeed = 8;
     public KeyCode runningKey = KeyCode.LeftShift;
     private GameObject body;
@@ -18,31 +17,59 @@ public class FirstPersonMovement : MonoBehaviour
     private GameObject boat;
     private bool isSmallKeyDown;
     private bool isThinKeyDown;
+
+    public static float current_stamina = 100; // 스태미나. FilCheck 스크립트로 넘겨야함.
+    public static float temp_stamina = 100; //Lerp를 이용해 천천히 줄어드는것처럼 보이기 위해 만든 변수.
+
+    private bool staminaIncreaseable = true; //뛰고나서 잠시동안 증가하지 못하게 하기위해 만든 변수.
+    private float staminaDelay;
     
     new Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
-
-
 
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         boat = GameObject.FindGameObjectWithTag("Boat");
         controller = GameObject.FindGameObjectWithTag("Controller");
+
     }
     void Update()
     {
-        Small();
+        Small(); 
         Thin();
-        SpeedCheck();
+        SpeedCheck(); //달릴때 속도 조절.
+        StaminaUp(); //스테미나 증가
+        RunStaminaDown(); //달릴때 스테미나 감소.
+        
     }
 
+    void StaminaUp()
+    {
+        if (current_stamina < 100 && staminaIncreaseable) //달리지 않아야 스테미나 차도록.
+        {
+            current_stamina += 1f * Time.deltaTime;
+            temp_stamina = (float)current_stamina / 100;
+        }
+    }
+
+    void RunStaminaDown()
+    {
+        if (Input.GetKey(runningKey) && canRun)
+        {
+            current_stamina -= 5f * Time.deltaTime;
+            temp_stamina = (float)current_stamina / 100;
+        }
+    }
 
     void Small()
     {
         //세로로 작아지기
-        if(Input.GetMouseButtonDown(0) && !isSmallKeyDown){
+        if(Input.GetMouseButtonDown(0) && !isSmallKeyDown && current_stamina >= 10){
+            current_stamina -= 10f;
+            if(current_stamina < 0) current_stamina = 0;
+            temp_stamina = (float)current_stamina / 100;
             controller.transform.localScale = new Vector3(this.transform.localScale.x, 0.05f, this.transform.localScale.z);
             isSmallKeyDown = true;
             small.Play();
@@ -56,7 +83,10 @@ public class FirstPersonMovement : MonoBehaviour
 
     void Thin()
     {
-        if(Input.GetMouseButtonDown(1) && !isThinKeyDown){
+        if(Input.GetMouseButtonDown(1) && !isThinKeyDown && current_stamina >= 10){
+            current_stamina -= 10f;
+            if(current_stamina < 0) current_stamina = 0;
+            temp_stamina = (float)current_stamina / 100;
             controller.transform.localScale = new Vector3(0.05f, this.transform.localScale.y, this.transform.localScale.z);
             controller.GetComponent<CapsuleCollider>().radius = 0.3f;
             isThinKeyDown = true;
@@ -91,14 +121,24 @@ public class FirstPersonMovement : MonoBehaviour
             runSpeed = 8f;
         }
     }
+    
+    
 
     void FixedUpdate()
     {
-        // Update IsRunning from input.
-        IsRunning = canRun && Input.GetKey(runningKey);
+        if(current_stamina < 1) canRun = false;
+        else canRun = true;
 
+
+        if(Input.GetKey(runningKey))  staminaDelay = 0;
+        else staminaDelay += Time.deltaTime; //뛰지 않은시간 동안 Delay 늘어나게하고 특정 시간되면 변수 true로.
+
+        if(staminaDelay >= 1f) staminaIncreaseable = true; //1초동안 뛰지 않아야 스테미나 증가할수 있도록.
+        else staminaIncreaseable = false;
+
+    
         // Get targetMovingSpeed.
-        float targetMovingSpeed = IsRunning ? runSpeed : speed;
+        float targetMovingSpeed = (canRun && Input.GetKey(runningKey)) ? runSpeed : speed;
         if (speedOverrides.Count > 0)
         {
             targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
@@ -109,6 +149,7 @@ public class FirstPersonMovement : MonoBehaviour
 
         // Apply movement.
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+        
     }
 
     // void OnCollisionEnter(Collision other) {
