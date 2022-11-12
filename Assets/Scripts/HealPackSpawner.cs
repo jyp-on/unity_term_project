@@ -13,7 +13,7 @@ public class HealPackSpawner : MonoBehaviour
             yield return new WaitForSeconds(10.0f);
 
             float rand_x = Random.Range(-3.0f, 3.0f);
-            float rand_y = Random.Range(0.0f, 3.0f);
+            float rand_y = Random.Range(3.0f, 5.0f);
 
             GameObject pf_Ob = Instantiate(
             pf_HealPack, 
