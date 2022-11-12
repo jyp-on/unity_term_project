@@ -13,7 +13,6 @@ public class MovableObsWidth : MonoBehaviour
   { 
     speedControl = GameObject.Find("GameManager").GetComponent<SpeedControl>();
     speed = speedControl.movableObsWidthSpeed;
-    Debug.Log(speed);
     
     randomStartDirection = Random.Range(0, 2);
 

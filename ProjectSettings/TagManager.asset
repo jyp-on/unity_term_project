@@ -13,6 +13,7 @@ TagManager:
   - FlyingObstacle
   - PlayerEyes
   - HealPack
+  - NuClear
   layers:
   - Default
   - TransparentFX

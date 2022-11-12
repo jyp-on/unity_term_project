@@ -13,7 +13,7 @@ public class FailCheck : MonoBehaviour
   private int current_score;
   private int best_score;
 
-//Hp ¹× Stamina °ü¸® ºÎºÐ.
+//Hp ï¿½ï¿½ Stamina ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½.
   TextMeshProUGUI HpText;
   TextMeshProUGUI StaminaText;
 
@@ -21,14 +21,14 @@ public class FailCheck : MonoBehaviour
   private Slider hp;
   private float max_hp = 100;
   private float current_hp = 100;
-  private float temp_hp; //Lerp¸¦ ÀÌ¿ëÇØ ÃµÃµÈ÷ ÁÙ¾îµå´Â°ÍÃ³·³ º¸ÀÌ±â À§ÇØ ¸¸µç º¯¼ö.
+  private float temp_hp; //Lerpï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ÃµÃµï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Â°ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
   
   [SerializeField]
   private Slider stamina;
   private float max_stamina = 100;
-  private float current_stamina = 100; //Ä³¸¯ÅÍÀÇ static º¯¼ö¸¦ ÀÌ¿ëÇÏ¿© °¡Á®¿Ã °Í.
+  private float current_stamina = 100; //Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ static ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
   
-  private float temp_stamina = 100; //Lerp¸¦ ÀÌ¿ëÇØ ÃµÃµÈ÷ ÁÙ¾îµå´Â°ÍÃ³·³ º¸ÀÌ±â À§ÇØ ¸¸µç º¯¼ö.
+  private float temp_stamina = 100; //Lerpï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ÃµÃµï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Â°ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
  
   void Awake()
   {
@@ -42,7 +42,7 @@ public class FailCheck : MonoBehaviour
     hp.value = 1;
     temp_hp = (float)current_hp / (float)max_hp;
 
-    current_stamina = FirstPersonMovement.current_stamina; //ÇÃ·¹ÀÌ¾î ¿òÁ÷ÀÓ ½ºÅ©¸³Æ®¿¡¼­ ÇöÀç ½ºÅ×¹Ì³ª °¡Á®¿È.
+    current_stamina = FirstPersonMovement.current_stamina; //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×¹Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     temp_stamina = FirstPersonMovement.temp_stamina;
 
     stamina.value = 1;
@@ -57,7 +57,7 @@ public class FailCheck : MonoBehaviour
 
     HpText.text = current_hp + "/" + max_hp;
 
-    current_stamina = FirstPersonMovement.current_stamina; //ÇÃ·¹ÀÌ¾î ¿òÁ÷ÀÓ ½ºÅ©¸³Æ®¿¡¼­ ÇöÀç ½ºÅ×¹Ì³ª °¡Á®¿È.
+    current_stamina = FirstPersonMovement.current_stamina; //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×¹Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     temp_stamina = FirstPersonMovement.temp_stamina;
 
     StaminaText.text = (int)current_stamina + "/" + max_stamina;
@@ -79,10 +79,10 @@ public class FailCheck : MonoBehaviour
 
   private void OnCollisionEnter(Collision other)
   {
-    if (other.gameObject.tag == "FailCheck") Fail(); //º¸Æ® ¿·¸é¿¡ ´ê¾ÒÀ»¶§.
+    if (other.gameObject.tag == "FailCheck") Fail(); //ï¿½ï¿½Æ® ï¿½ï¿½ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?.
 
     if (other.gameObject.tag == "Obstacle")
-    { //player hp °¨¼Ò
+    { //player hp ï¿½ï¿½ï¿½ï¿½
       CollisionSound.Play();
       if (current_hp > 0) current_hp -= 20;
       
@@ -90,7 +90,7 @@ public class FailCheck : MonoBehaviour
     }
 
     if (other.gameObject.tag == "FlyingObstacle")
-    { //player hp °¨¼Ò
+    { //player hp ï¿½ï¿½ï¿½ï¿½
       CollisionSound.Play();
       if (current_hp > 0) current_hp -= 10;
       
@@ -101,7 +101,7 @@ public class FailCheck : MonoBehaviour
   void OnTriggerStay(Collider other) 
   {
     if (other.gameObject.tag == "HealPack")
-    { //player hp Áõ°¡
+    { //player hp ï¿½ï¿½ï¿½ï¿½
       HealSound.Play();
       current_hp += 10;
       if(current_hp > 100) current_hp = 100;
@@ -109,18 +109,38 @@ public class FailCheck : MonoBehaviour
       temp_hp = (float)current_hp / (float)max_hp;
       Destroy(other.gameObject);
     }  
+
+    if (other.gameObject.tag == "NuClear")
+    { //ï¿½ï¿½Ö¹ï¿? ï¿½ï¿½Ã¼ ï¿½Ä±ï¿½
+      // HealSound.Play();
+
+      GameObject [] obstacle = GameObject.FindGameObjectsWithTag("Obstacle");
+      GameObject [] flyingObstacle = GameObject.FindGameObjectsWithTag("FlyingObstacle");
+
+      GameObject boom = other.transform.Find("Explosion").gameObject;
+      boom.transform.parent = null;
+      boom.transform.parent = GameObject.FindGameObjectWithTag("Boat").transform;
+      boom.transform.localScale = new Vector3(10,10,10);
+      boom.transform.position += new Vector3(0, 3, 5);
+      boom.SetActive(true);
+      Destroy(other.gameObject);
+      Destroy(boom.gameObject, 1f);
+      foreach(GameObject ob in obstacle)  Destroy(ob);
+      foreach(GameObject ob in flyingObstacle)  Destroy(ob);
+
+    }  
   }
 
   void Fail()
   {
-    FirstPersonMovement.current_stamina = 100; //static ¿µ¿ªÀÌ¶ó ÃÊ±âÈ­ÇÊ¿ä.
+    FirstPersonMovement.current_stamina = 100; //static ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½Ê±ï¿½È­ï¿½Ê¿ï¿½.
     FirstPersonMovement.temp_stamina = 100;
 
     PlayerPrefs.SetInt("current_score", (int)GuiControl.current_score);
     PlayerPrefs.SetInt("level", guiControl.level);
 
     current_score = PlayerPrefs.GetInt("current_score");
-    best_score = PlayerPrefs.GetInt("best_score", 0); //ÃÖ°íÁ¡¼ö°¡ ¾ø´Ù¸é 0Á¡À¸·Î 
+    best_score = PlayerPrefs.GetInt("best_score", 0); //ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ 0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
     if (current_score > best_score)
     {

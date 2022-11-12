@@ -86,7 +86,6 @@ public class FirstPersonMovement : MonoBehaviour
             if(current_stamina < 0) current_stamina = 0;
             temp_stamina = (float)current_stamina / 100;
             controller.transform.localScale = new Vector3(0.3f, this.transform.localScale.y, this.transform.localScale.z);
-            Debug.Log(controller.transform.localScale);
             controller.GetComponent<CapsuleCollider>().radius = 0.3f;
             isThinKeyDown = true;
             thin.Play();
@@ -94,7 +93,6 @@ public class FirstPersonMovement : MonoBehaviour
 
         if(Input.GetMouseButtonUp(1)){
             controller.transform.localScale = new Vector3(1.1f, this.transform.localScale.y, this.transform.localScale.z);
-            Debug.Log(controller.transform.localScale);
             controller.GetComponent<CapsuleCollider>().radius = 0.5f;
             isThinKeyDown = false;
         }
