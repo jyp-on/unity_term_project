@@ -84,9 +84,19 @@ public class FailCheck : MonoBehaviour
     if (other.gameObject.tag == "Obstacle")
     { //player hp ����
       CollisionSound.Play();
-      if (current_hp > 0) current_hp -= 20;
+
+      if (other.gameObject.name == "Ball")
+      {
+        if (current_hp > 0) current_hp -= 30;
       
-      temp_hp = (float)current_hp / (float)max_hp;
+        temp_hp = (float)current_hp / (float)max_hp;
+      }
+      else
+      {
+        if (current_hp > 0) current_hp -= 20;
+      
+        temp_hp = (float)current_hp / (float)max_hp;
+      }
     }
 
     if (other.gameObject.tag == "FlyingObstacle")
@@ -98,9 +108,9 @@ public class FailCheck : MonoBehaviour
     } 
   }
 
-  void OnTriggerStay(Collider other) 
+  void OnTriggerEnter(Collider other)
   {
-    if (other.gameObject.tag == "HealPack")
+    if (other.gameObject.tag == "Heal")
     { //player hp ����
       HealSound.Play();
       current_hp += 10;
@@ -110,7 +120,7 @@ public class FailCheck : MonoBehaviour
       Destroy(other.gameObject);
     }  
 
-    if (other.gameObject.tag == "NuClear")
+    if (other.gameObject.tag == "Bomb")
     { //��ֹ�? ��ü �ı�
       // HealSound.Play();
 
@@ -129,6 +139,15 @@ public class FailCheck : MonoBehaviour
       foreach(GameObject ob in flyingObstacle)  Destroy(ob);
 
     }  
+
+    if(other.gameObject.tag == "Stamina")
+    {
+      HealSound.Play();
+      FirstPersonMovement.current_stamina += 20;
+      if(FirstPersonMovement.current_stamina > 100) FirstPersonMovement.current_stamina = 100;
+      temp_stamina = (float)temp_stamina / (float)max_stamina;
+      Destroy(other.gameObject);
+    }
   }
 
   void Fail()

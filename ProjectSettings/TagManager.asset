@@ -12,8 +12,9 @@ TagManager:
   - FailCheck
   - FlyingObstacle
   - PlayerEyes
-  - HealPack
-  - NuClear
+  - Bomb
+  - Heal
+  - Stamina
   layers:
   - Default
   - TransparentFX

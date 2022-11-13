@@ -35,15 +35,15 @@ public class ObstacleSpawner : MonoBehaviour
     {
         game_level = guiControl.level;
         
-        if(game_level < 5) interval = 7f;
-        else if(game_level < 10) interval = 6.5f;
-        else if(game_level < 15) interval = 6f;
-        else if(game_level < 20) interval = 5.5f;
-        else if(game_level < 25) interval = 5f;
-        else if(game_level < 30) interval = 4f;
-        else if(game_level < 35) interval = 3f;
-        else if(game_level < 40) interval = 2.5f;
-        else interval = 2f; //최대난이도 40
+        if(game_level < 5) interval = 5f;
+        else if(game_level < 10) interval = Random.Range(5f, 6f);
+        else if(game_level < 15) interval = Random.Range(4f, 5f);
+        else if(game_level < 20) interval = Random.Range(3.5f, 4f);
+        else if(game_level < 25) interval = Random.Range(3f, 3.5f);
+        else if(game_level < 30) interval = Random.Range(2.8f, 3f);
+        else if(game_level < 35) interval = Random.Range(2f, 2.8f);
+        else if(game_level < 40) interval = Random.Range(1.5f, 2f);
+        else interval = 1.5f; //최대난이도 40
 
     }
 }

@@ -10,8 +10,8 @@ public class ItemSpawner : MonoBehaviour
     {   
         while(true)
         {
-            yield return new WaitForSeconds(10.0f);
-            int pf_num = Random.Range(0, 2);
+            yield return new WaitForSeconds(Random.Range(8f, 13f));
+            int pf_num = Random.Range(0, 3);
 
             float rand_x = Random.Range(-3.0f, 3.0f);
             float rand_y = Random.Range(3.0f, 5.0f);
