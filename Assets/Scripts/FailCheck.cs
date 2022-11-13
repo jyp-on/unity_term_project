@@ -29,6 +29,8 @@ public class FailCheck : MonoBehaviour
   private float current_stamina = 100; //ĳ������ static ������ �̿��Ͽ� ������ ��.
   
   private float temp_stamina = 100; //Lerp�� �̿��� õõ�� �پ��°�ó�� ���̱� ���� ���� ����.
+  public float invincible_time; //????
+  public static bool isInvincible = false;//????
  
   void Awake()
   {
@@ -64,6 +66,15 @@ public class FailCheck : MonoBehaviour
 
     HandleHp();
     HandleStamina();
+    InvincibleCount();
+    
+  }
+
+  private void InvincibleCount()
+  {
+    if(isInvincible) invincible_time += Time.deltaTime;
+      
+    if(invincible_time > 1f) isInvincible = false;
   }
 
   private void HandleHp()
@@ -73,17 +84,17 @@ public class FailCheck : MonoBehaviour
 
   private void HandleStamina()
   {
-    stamina.value = Mathf.Lerp(stamina.value, temp_stamina, Time.deltaTime * 3);
+    stamina.value = Mathf.Lerp(stamina.value, FirstPersonMovement.temp_stamina, Time.deltaTime * 3);
     
   }
 
   private void OnCollisionEnter(Collision other)
   {
-    if (other.gameObject.tag == "FailCheck") Fail(); //��Ʈ ���鿡 �������?.
-
-    if (other.gameObject.tag == "Obstacle")
+    if (other.gameObject.tag == "Obstacle" && !isInvincible)
     { //player hp ����
       CollisionSound.Play();
+      isInvincible = true; //1?? ??.
+      invincible_time = 0;
 
       if (other.gameObject.name == "Ball")
       {
@@ -97,15 +108,21 @@ public class FailCheck : MonoBehaviour
       
         temp_hp = (float)current_hp / (float)max_hp;
       }
+      
     }
 
-    if (other.gameObject.tag == "FlyingObstacle")
+    if (other.gameObject.tag == "FlyingObstacle" && !isInvincible)
     { //player hp ����
+      isInvincible = true; //1?? ??.
+      invincible_time = 0;
       CollisionSound.Play();
       if (current_hp > 0) current_hp -= 10;
       
       temp_hp = (float)current_hp / (float)max_hp;
+      
     } 
+
+    
   }
 
   void OnTriggerEnter(Collider other)
@@ -145,7 +162,7 @@ public class FailCheck : MonoBehaviour
       HealSound.Play();
       FirstPersonMovement.current_stamina += 20;
       if(FirstPersonMovement.current_stamina > 100) FirstPersonMovement.current_stamina = 100;
-      temp_stamina = (float)temp_stamina / (float)max_stamina;
+      FirstPersonMovement.temp_stamina = (float) FirstPersonMovement.current_stamina / 100f;
       Destroy(other.gameObject);
     }
   }
@@ -165,7 +182,7 @@ public class FailCheck : MonoBehaviour
     {
       PlayerPrefs.SetInt("best_score", current_score);
     }
-
+    current_score = 0;
     SceneManager.LoadScene("Result");
   }
 }

@@ -26,8 +26,5 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("isIdle", !Input.anyKey);
         anim.SetBool("isWalk", !Input.GetKey(runningKey) && isArrowKeyDown); //Shift 누르지 않고 어떤키를 누르고있을때.
         anim.SetBool("isRun", Input.GetKey(runningKey) && isArrowKeyDown);
-
-
-        
     }
 }

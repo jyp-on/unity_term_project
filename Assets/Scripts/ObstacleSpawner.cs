@@ -22,11 +22,22 @@ public class ObstacleSpawner : MonoBehaviour
         {
             int rand_num = Random.Range(0, 7); 
             float rand_x = Random.Range(-2.0f, 2.0f);
-            GameObject pf_Ob = Instantiate(pf_Obstacle[rand_num], 
-            new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
-            pf_Obstacle[rand_num].transform.rotation);
+            if(rand_num == 4)
+            {
+                GameObject pf_Ob = Instantiate(pf_Obstacle[rand_num], 
+                new Vector3(pf_Obstacle[rand_num].transform.position.x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
+                pf_Obstacle[rand_num].transform.rotation);
+                Destroy(pf_Ob, 12.0f);
+            }
+            else
+            {
+                GameObject pf_Ob = Instantiate(pf_Obstacle[rand_num], 
+                new Vector3(this.transform.position.x + rand_x, pf_Obstacle[rand_num].transform.position.y, this.transform.position.z),
+                pf_Obstacle[rand_num].transform.rotation);
+                Destroy(pf_Ob, 12.0f);
+            }
 
-            Destroy(pf_Ob, 12.0f);
+            
             yield return new WaitForSeconds(interval);
         }
         

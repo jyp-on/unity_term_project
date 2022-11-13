@@ -11,7 +11,6 @@ public class FirstPersonMovement : MonoBehaviour
     public KeyCode runningKey = KeyCode.LeftShift;
     private GameObject body;
     private GameObject controller;
-    private CapsuleCollider capCol;
     private GameObject boat;
     private bool isSmallKeyDown;
     private bool isThinKeyDown;
@@ -25,13 +24,14 @@ public class FirstPersonMovement : MonoBehaviour
     new Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
+    Animator anim;
 
-    void Awake()
+    void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         boat = GameObject.FindGameObjectWithTag("Boat");
         controller = GameObject.FindGameObjectWithTag("Controller");
-
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -40,7 +40,20 @@ public class FirstPersonMovement : MonoBehaviour
         SpeedCheck(); //달릴때 속도 조절.
         StaminaUp(); //스테미나 증가
         RunStaminaDown(); //달릴때 스테미나 감소.
-        
+
+        if(current_stamina < 1f) 
+        {
+            if(Input.anyKey)
+            {
+                anim.SetBool("isWalk", true);
+                anim.SetBool("isRun", false);
+            }
+            else
+            {
+                anim.SetBool("isWalk", false);
+                anim.SetBool("isRun", false);
+            }
+        }
     }
 
     void StaminaUp()

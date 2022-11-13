@@ -9,11 +9,11 @@ public class Jump : MonoBehaviour
     public float jumpTime;
     Animator anim;
 
-    void Awake()
+    void Start()
     {
         // Get rigidbody.
         rigidbody = GetComponent<Rigidbody>();
-        anim = PlayerAnimator.anim;
+        anim = PlayerAnimator.anim; //Awake로 하면 anim 못가져옴 (null point exception)
     }
 
     void Update()

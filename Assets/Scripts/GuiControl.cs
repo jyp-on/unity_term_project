@@ -15,6 +15,7 @@ public class GuiControl : MonoBehaviour
 
     void Start()
     {
+        current_score = 0;
         currentScoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         currentLevelText = GameObject.Find("Level").GetComponent<TextMeshProUGUI>();
 

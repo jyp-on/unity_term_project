@@ -5,7 +5,7 @@ public class FirstPersonLook : MonoBehaviour
     [SerializeField]
     Transform character;
     public float sensitivity = 2;
-    public float smoothing = 20f;
+    public float smoothing = 10f;
 
     Vector2 velocity;
     Vector2 frameVelocity;
