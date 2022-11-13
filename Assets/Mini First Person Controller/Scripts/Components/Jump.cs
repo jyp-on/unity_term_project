@@ -5,13 +5,15 @@ public class Jump : MonoBehaviour
     public AudioSource audioSource;
     new Rigidbody rigidbody;
     public float jumpStrength = 4;
-    public int jumpCount; //점프했는지 여부
+    public static int jumpCount; //점프했는지 여부
     public float jumpTime;
+    Animator anim;
 
     void Awake()
     {
         // Get rigidbody.
         rigidbody = GetComponent<Rigidbody>();
+        anim = PlayerAnimator.anim;
     }
 
     void Update()
@@ -21,13 +23,18 @@ public class Jump : MonoBehaviour
         {
             jumpCount += 1;
             rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-
+            anim.SetBool("isJump", true);
+            anim.SetTrigger("doJump");
+            
             audioSource.Play();
         }
     }
 
     void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Boat")
+        {
             jumpCount = 0;
+            anim.SetBool("isJump", false);
+        }
     }
 }
