@@ -60,7 +60,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
         if (current_stamina < 100 && staminaIncreaseable) //달리지 않아야 스테미나 차도록.
         {
-            current_stamina += 1f * Time.deltaTime;
+            current_stamina += 2f * Time.deltaTime;
             temp_stamina = (float)current_stamina / 100;
         }
     }
@@ -69,7 +69,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
         if (Input.GetKey(runningKey) && canRun)
         {
-            current_stamina -= 10f * Time.deltaTime;
+            current_stamina -= 8f * Time.deltaTime;
             temp_stamina = (float)current_stamina / 100;
         }
     }

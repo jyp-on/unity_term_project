@@ -7,6 +7,8 @@ public class Jump : MonoBehaviour
     public float jumpStrength = 4;
     public static int jumpCount; //점프했는지 여부
     public float jumpTime;
+    private bool isSuperJump = false;
+    
     Animator anim;
 
     void Start()
@@ -28,13 +30,27 @@ public class Jump : MonoBehaviour
             
             audioSource.Play();
         }
+
+        if(Input.GetMouseButtonDown(2) && !isSuperJump && FirstPersonMovement.current_stamina > 20f)
+        {
+            isSuperJump = true;
+            rigidbody.AddForce(Vector3.up * jumpStrength * 2, ForceMode.Impulse);
+            anim.SetBool("isJump", true);
+            anim.SetTrigger("doJump");
+
+            FirstPersonMovement.current_stamina -= 20f;
+            FirstPersonMovement.temp_stamina = (float) FirstPersonMovement.current_stamina / 100f;
+            
+            audioSource.Play();
+        }
     }
 
     void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Boat")
-        {
+        // if(other.gameObject.tag == "Boat")
+        // {
             jumpCount = 0;
+            isSuperJump = false;
             anim.SetBool("isJump", false);
-        }
+        // }
     }
 }

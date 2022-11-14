@@ -41,16 +41,16 @@ public class GuiControl : MonoBehaviour
     void Score()
     {
         current_time += Time.deltaTime;
-        if(level <= 5) current_score += 0.2f * Time.deltaTime;
-        else if(level <= 10) current_score += 0.4f * Time.deltaTime;
-        else if(level <= 15) current_score += 0.6f * Time.deltaTime;
-        else if(level <= 20) current_score += 1f * Time.deltaTime;
-        else if(level <= 25) current_score += 1.5f * Time.deltaTime;
-        else if(level <= 30) current_score += 2f * Time.deltaTime;
+        if(level <= 5) current_score += 0.4f * Time.deltaTime;
+        else if(level <= 10) current_score += 0.6f * Time.deltaTime;
+        else if(level <= 15) current_score += 1f * Time.deltaTime;
+        else if(level <= 20) current_score += 1.5f * Time.deltaTime;
+        else if(level <= 25) current_score += 2f * Time.deltaTime;
+        else if(level <= 30) current_score += 2.5f * Time.deltaTime;
         else if(level <= 35) current_score += 3f * Time.deltaTime;
         else if(level < 40) current_score += 5f * Time.deltaTime; // 200초까지 어려워지도록 구현.
 
-        else current_score += 10f * Time.deltaTime; //최대난이도 40 (200초에서 가장 어려움)
+        else current_score += 8f * Time.deltaTime; //최대난이도 40 (200초에서 가장 어려움)
 
     }
 }

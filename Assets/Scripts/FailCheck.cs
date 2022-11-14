@@ -160,9 +160,11 @@ public class FailCheck : MonoBehaviour
     if(other.gameObject.tag == "Stamina")
     {
       HealSound.Play();
+
       FirstPersonMovement.current_stamina += 20;
       if(FirstPersonMovement.current_stamina > 100) FirstPersonMovement.current_stamina = 100;
       FirstPersonMovement.temp_stamina = (float) FirstPersonMovement.current_stamina / 100f;
+      
       Destroy(other.gameObject);
     }
   }
